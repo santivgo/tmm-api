@@ -16,9 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 public class MovieModel {
     @Id
-    Long id;
-    String name;
-    String photoUrl;
+    private Long id;
+    private String name;
+    private String photoUrl;
 
     @ManyToMany
     @JoinTable(name="categories_ids")

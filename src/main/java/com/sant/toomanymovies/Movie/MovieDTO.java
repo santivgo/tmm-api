@@ -10,10 +10,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieDTO {
-    Long id;
-    String name;
-    String photoUrl;
-    List<CategoryModel> categories;
-    List<UserMovieListDTO> userLists;
+    private Long id;
+    private String name;
+    private String photoUrl;
+    private List<CategoryModel> categories;
+    private List<UserMovieListDTO> userLists;
 
 }

@@ -19,4 +19,9 @@ public class CategoryModel {
     String nome;
     @ManyToMany(mappedBy = "categories")
     List<MovieModel> movies;
+
+    public CategoryModel(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 }

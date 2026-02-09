@@ -17,14 +17,14 @@ import java.util.List;
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long id;
-    String nome;
+    private Long id;
+    private String nome;
     @Column(unique = true, nullable = false, updatable = false)
-    String username;
+    private String username;
     @Column(unique = true, nullable = false, updatable = false)
-    String email;
-    String senha;
-    int idade;
+    private String email;
+    private String senha;
+    private int idade;
 
     @OneToMany(mappedBy = "owner")
     List<UserMovieListModel> userLists;

@@ -10,11 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
-    Long id;
-    String nome;
-    String username;
-    String email;
-    String senha;
-    int idade;
-    List<UserMovieListDTO> userLists;
+    private Long id;
+    private String nome;
+    private String username;
+    private String email;
+    private String senha;
+    private int idade;
+    private List<UserMovieListDTO> userLists;
 }
