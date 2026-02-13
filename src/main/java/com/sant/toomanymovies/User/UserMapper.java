@@ -4,7 +4,11 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    UserDTO map(UserModel userModel);
-    UserModel map(UserDTO userModel);
+    UserResponseDTO responseMap(UserModel userModel);
+
+    UserRequestDTO requestMap(UserModel userModel);
+
+    UserModel map(UserResponseDTO userResponseDTO);
+    UserModel map(UserRequestDTO userRequestDTO);
 
 }
