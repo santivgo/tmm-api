@@ -10,6 +10,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
+
+    public UserDTO(String nome, String username, String email, int idade) {
+        this.nome = nome;
+        this.username = username;
+        this.email = email;
+        this.idade = idade;
+    }
+
     private Long id;
     private String nome;
     private String username;

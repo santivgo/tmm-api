@@ -1,27 +1,25 @@
 package com.sant.toomanymovies.Category;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sant.toomanymovies.Movie.MovieModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
+@Builder
 @Entity
 @Table(name = "tb_category")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class CategoryModel {
     @Id
-    Long id;
-    String nome;
+    @NonNull
+    private Long id;
+    private String nome;
     @ManyToMany(mappedBy = "categories")
-    List<MovieModel> movies;
+    private List<MovieModel> movies;
 
-    public CategoryModel(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
 }

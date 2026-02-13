@@ -3,9 +3,8 @@ package com.sant.toomanymovies.Movie;
 import com.sant.toomanymovies.Category.CategoryModel;
 import com.sant.toomanymovies.UserMovieList.UserMovieListModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.List;
 
 @Entity
@@ -14,14 +13,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
+
 public class MovieModel {
     @Id
+    @NonNull
     private Long id;
+    @NonNull
     private String name;
     private String photoUrl;
 
     @ManyToMany
-    @JoinTable(name="categories_ids")
+    @JoinTable(name="tb_categories_ids")
     List<CategoryModel> categories;
 
     @ManyToMany

@@ -1,6 +1,7 @@
 package com.sant.toomanymovies.Movie;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,17 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequiredArgsConstructor
+@RequestMapping("/movies")
+
 public class MovieController {
 
-    MovieService movieService;
+    private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
+    @GetMapping("/{id}")
+    public MovieDTO getMovieById(@PathVariable String id){
+        return movieService.getMovieById(id);
     }
 
-    @GetMapping("/{nome}")
+    @GetMapping("/search/{nome}")
     public List<MovieDTO> searchMovie(@PathVariable String nome){
         return movieService.searchMovie(nome);
     }
+
 }
