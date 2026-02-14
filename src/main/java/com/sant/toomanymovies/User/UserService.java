@@ -16,41 +16,41 @@ public class UserService {
 
 
     ///  READ
-    public List<UserDTO> getUsersList(){
-        return userRepository.findAll().stream().map(userMapper::map).toList();
+    public List<UserResponseDTO> getUsersList(){
+        return userRepository.findAll().stream().map(userMapper::responseMap).toList();
     }
 
-    public UserDTO createUser(UserDTO user) {
+    public UserResponseDTO createUser(UserRequestDTO user) {
         UserModel convertedUser = userMapper.map(user);
         UserModel savedUser = userRepository.save(convertedUser);
-        return userMapper.map(savedUser);
+        return userMapper.responseMap(savedUser);
     }
 
     /// CREATE
 
-    public UserDTO getUser(Long id){
+    public UserResponseDTO getUser(Long id){
         Optional<UserModel> userModel = userRepository.findById(id);
-        return userModel.map(userMapper::map).orElse(null);
+        return userModel.map(userMapper::responseMap).orElse(null);
 
     }
 
     /// UPDATE
 
-    public UserDTO updateUser(long id, UserDTO partialUser){
+    public UserResponseDTO updateUser(long id, UserRequestDTO partialUser){
         UserModel searchedUser = userRepository.findById(id).orElse(null);
         if (searchedUser == null) return null;
 
-        searchedUser.setEmail(partialUser.getEmail());
-        searchedUser.setNome(partialUser.getNome());
-        searchedUser.setUsername(partialUser.getUsername());
-        searchedUser.setIdade(partialUser.getIdade());
+        searchedUser.setEmail(partialUser.email());
+        searchedUser.setNome(partialUser.nome());
+        searchedUser.setUsername(partialUser.username());
+        searchedUser.setIdade(partialUser.idade());
         searchedUser = userRepository.save(searchedUser);
-        return userMapper.map(searchedUser);
+        return userMapper.responseMap(searchedUser);
     }
 
     ///  DELETE
 
-    public void deleteUser(long id){
+    public void deleteById(long id){
         userRepository.findById(id).ifPresent(foundUser -> userRepository.deleteById(id));
 
 

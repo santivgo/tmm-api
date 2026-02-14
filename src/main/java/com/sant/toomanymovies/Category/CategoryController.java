@@ -42,7 +42,7 @@ public class CategoryController {
     ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id){
         CategoryDTO categoryDTO = categoryService.getCategory(id);
         if (categoryDTO == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(categoryDTO);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.ok(categoryDTO);
     }

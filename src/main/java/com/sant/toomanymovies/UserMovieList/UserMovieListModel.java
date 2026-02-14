@@ -19,15 +19,15 @@ public class UserMovieListModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long id;
-    String name;
+    private Long id;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    UserModel owner;
+    private UserModel owner;
 
 
     @ManyToMany
     @JoinTable(name="tb_movie_list")
-    List<MovieModel> UserMoviesList;
+    private List<MovieModel> UserMoviesList;
 }
